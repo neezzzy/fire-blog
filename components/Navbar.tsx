@@ -1,14 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
-
-interface User {
-  photoURL: string
-}
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
+import { auth } from "../lib/firebase";
 
 // Top navbar
 export default function Navbar() {
-  const user: User | null = null;
-  const username: string | null = null;
+  const { user, username } = useContext(UserContext);
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -20,23 +24,33 @@ export default function Navbar() {
         </li>
 
         {/* user is signed-in and has username */}
-        {username && (
+        {user && (
           <>
-            <li className="push-left">
-              <Link href="/admin">
-                <button className="btn-blue">Write Posts</button>
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${username}`}>
-                <Image src={user?.photoURL} alt="photo URL image" />
-              </Link>
-            </li>
+            <ul className="push-left">
+              <li>
+                <Link href="/enter">
+                  <button onClick={handleSignOut} className="btn">
+                    Sign Out
+                  </button>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin">
+                  <button className="btn-blue">Write Posts</button>
+                </Link>
+              </li>
+
+              <li>
+                <Link href={`/${username}`}>
+                  <img src={user?.photoURL} alt="photo URL image" />
+                </Link>
+              </li>
+            </ul>
           </>
         )}
 
         {/* user is not signed OR has not created username */}
-        {!username && (
+        {!user && (
           <li>
             <Link href="/enter">
               <button className="btn-blue">Log in</button>
