@@ -2,7 +2,7 @@ import { auth, googleAuthProvider, firestore } from "../../lib/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useContext, useState, useEffect, useCallback } from "react";
 import { UserContext } from "../../lib/context";
-import { collection, doc, writeBatch, getDoc } from "firebase/firestore";
+import { doc, writeBatch, getDoc } from "firebase/firestore";
 import debounce from "lodash.debounce";
 
 interface UsernameMessageProps {
