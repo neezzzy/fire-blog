@@ -36,7 +36,7 @@ export function useUserData() {
       unsubscribeAuth;
       unsubscribe;
     };
-  }, []);
+  }, [user]);
 
   return { user, username };
 }

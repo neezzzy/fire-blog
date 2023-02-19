@@ -18,7 +18,6 @@ export default function Enter({}) {
   // 2. user signed in, but missing username <UsernameForm />
   // 3. user signed in, has username <SignOutButton />
 
-  console.log(username)
   return (
     <main title="Enter">
       {user ? (
