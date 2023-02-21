@@ -25,7 +25,7 @@ export async function getServerSideProps({ query }) {
   let user = null;
   let posts = null;
 
-  if (userDoc.exists()) {
+  if (userDoc && userDoc.exists()) {
     user = userDoc.data();
     const userDocRef = collection(firestore, "posts");
     const postsQuery = q(
@@ -37,12 +37,11 @@ export async function getServerSideProps({ query }) {
     const postSnapshot = await getDocs(postsQuery);
     posts = postSnapshot.docs.map((doc) => postToJSON(doc));
   } else {
-    // doc.data() will be undefined in this case
     console.log("No such document!");
   }
 
   return {
-    props: { user, posts }, // will be passed to the page component as props
+    props: { user, posts },
   };
 }
 
@@ -56,7 +55,7 @@ export default function UserProfilePage({
   return (
     <main>
       <UserProfile user={user} />
-      <PostFeed posts={posts} />
+      <PostFeed admin={true} posts={posts} />
     </main>
   );
 }

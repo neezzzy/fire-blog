@@ -10,6 +10,7 @@ import {
   limit,
   getDocs,
   Timestamp,
+  serverTimestamp
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -25,11 +26,14 @@ const firebaseConfig = {
  * Gets a users/{uid} document with username
  * @param  {string} username
  */
-export async function getUserWithUsername(username: string) {
+export async function getUserWithUsername(username) {
   const usersRef = collection(firestore, "users");
-  const queryRef = query(usersRef, where("username", "==", username), limit(1));
-  const userDocs = await getDocs(queryRef);
-  return userDocs.docs[0];
+  const userQuery = query(usersRef, where("username", "==", username));
+  const userDoc = await getDocs(userQuery);
+
+  if (userDoc.empty) return null;
+
+  return userDoc.docs[0];
 }
 
 /**`
@@ -46,7 +50,11 @@ export function postToJSON(doc) {
 }
 
 const app = initializeApp(firebaseConfig);
+
+const fromMillis = Timestamp.fromMillis;
+export { fromMillis };
 export const storage = getStorage(app);
 export const googleAuthProvider = new GoogleAuthProvider();
 export const auth = getAuth();
 export const firestore = getFirestore(app);
+export { serverTimestamp };

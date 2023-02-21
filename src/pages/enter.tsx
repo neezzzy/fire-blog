@@ -56,7 +56,7 @@ function SignOutButton() {
     }
   };
 
-  return <button onClick={handleSignOut}>Sign Out</button>;
+  return <button className="btn" onClick={handleSignOut}>Sign Out</button>;
 }
 
 // Username form

@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --color-bg: #eef0f1;
-  --color-text: #08090a;
-  --color-blue: #3b49df;
-  --color-red: #df3b3b;
-  --color-green: #3bdf72;
-  --color-gray: #b5bdc4;
+  --color-bg: #f5f5f5;
+  --color-text: #333333;
+  --dark-grey: #3d3d3d;
+  --color-red: #f54d4d;
+  --color-green: #4df583;
+  --color-gray: #b0b0b0;
 }
+
 html,
 body {
   padding: 0;
@@ -24,9 +25,17 @@ main {
   padding: 1rem 10vw;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h2 { font-size: 1.25rem; }
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
 
 a {
   color: inherit;
@@ -38,7 +47,9 @@ a {
   box-sizing: border-box;
 }
 
-img {max-width: 100%;}
+img {
+  max-width: 100%;
+}
 
 input {
   display: inline-block;
@@ -98,7 +109,8 @@ code {
 
 /* Buttons */
 
-.btn, button {
+.btn,
+button {
   background-color: var(--color-gray);
   border: none;
   color: var(--color-text);
@@ -128,15 +140,21 @@ button:hover {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] {
   filter: brightness(80%);
   cursor: not-allowed;
 }
 
 button.btn-blue {
-  background-color: var(--color-blue);
+  background-color: var(--dark-grey);
   color: white;
 }
+
+button.btn-gray {
+  background-color: var(--color-red);
+  color: white;
+}
+
 
 button.btn-red {
   background-color: var(--color-red);
@@ -181,23 +199,23 @@ button.btn-logo {
 }
 
 .card-img-center {
-  width:20%;
-  display:block;
-  margin:auto;
+  width: 20%;
+  display: block;
+  margin: auto;
   border-radius: 50%;
   max-width: 150px;
 }
 
 .card-info {
   color: white;
-  background: var(--color-blue);
+  background: var(--dark-grey);
 }
 
 /* Loader */
 
 .loader {
   border: 10px solid var(--color-bg);
-  border-top: 10px solid var(--color-blue);
+  border-top: 10px solid var(--dark-grey);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -205,8 +223,13 @@ button.btn-logo {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* File uploads */
@@ -217,11 +240,12 @@ input[type="file"] {
 
 .upload-snippet {
   width: 75%;
-    margin-left: auto;
-    background: white;
-    padding: 5px;
-    margin: 5px 0;
+  margin-left: auto;
+  background: white;
+  padding: 5px;
+  margin: 5px 0;
 }
+
 /* Utilities */
 
 .push-left {
@@ -244,7 +268,7 @@ input[type="file"] {
 
 .text-info {
   font-weight: bold;
-  color: var(--color-blue);
+  color: var(--dark-grey);
 }
 
 .box {
@@ -259,4 +283,6 @@ input[type="file"] {
   text-align: center;
 }
 
-.hidden { display:  none; }
+.hidden {
+  display: none;
+}

@@ -1,7 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ![screenshot](./screencapture_1.png)
-
+![screenshot](./screencapture_2.png)
 ## Getting Started
 * Create your own next-config.js with [firebase]('https://firebase.google.com/') env variables in the root of the project:
 
@@ -35,3 +35,6 @@ npm run dev
 yarn dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Credit and inspiration
+inspired by https://github.com/fireship-io/next-firebase-course

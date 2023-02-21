@@ -1,11 +1,11 @@
 // UI component for user profile
-import Image from "next/image";
 import hacker_logo from "../public/hacker.png";
 
 export default function UserProfile({ user }) {
   return (
     <div className="box-center">
-      <Image
+      <img
+        loading="eager"
         alt="User Profile"
         width="150"
         height="150"

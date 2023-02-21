@@ -19,7 +19,7 @@ export default function Navbar() {
       <ul>
         <li>
           <Link href="/">
-            <button className="btn-logo">FEED</button>
+            <button className="btn-logo">BLOG</button>
           </Link>
         </li>
 
@@ -29,7 +29,7 @@ export default function Navbar() {
             <ul className="push-left">
               <li>
                 <Link href="/enter">
-                  <button onClick={handleSignOut} className="btn">
+                  <button onClick={handleSignOut} className="btn-gray">
                     Sign Out
                   </button>
                 </Link>
