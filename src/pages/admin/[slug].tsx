@@ -61,13 +61,17 @@ function PostManager() {
     </main>
   );
 }
+interface FormInputs {
+  singleErrorInput: string;
+}
 
 function PostForm({ defaultValues, postRef, preview }) {
-  const { register, handleSubmit, reset, watch, formState, errors } = useForm({
-    defaultValues,
-    mode: "onChange",
-  });
-  const { isValid, isDirty } = formState;
+  const { register, handleSubmit, reset, watch, formState } =
+    useForm<FormInputs>({
+      defaultValues,
+      mode: "onChange",
+    });
+  const { isValid, isDirty, errors } = formState;
   const updatePost = async ({ content, published }) => {
     await updateDoc(postRef, {
       content,
@@ -98,9 +102,6 @@ function PostForm({ defaultValues, postRef, preview }) {
               required: { value: true, message: "content is required" },
             })}
           ></textarea>
-          {errors && (
-            <p className="text-danger">{errors.content.message}</p>
-          )}
           <fieldset>
             <input
               className={styles.checkbox}
@@ -110,8 +111,14 @@ function PostForm({ defaultValues, postRef, preview }) {
             />
             <label>Published</label>
           </fieldset>
-
-          <button type="submit" className="btn-green">
+          {errors.content && (
+            <p className="text-danger">{errors.content.message}</p>
+          )}
+          <button
+            type="submit"
+            className="btn-green"
+            disabled={!isDirty || !isValid}
+          >
             Save Changes
           </button>
         </div>
