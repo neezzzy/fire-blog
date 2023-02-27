@@ -1,5 +1,14 @@
 # This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Features
+* real-time storage and image upload
+* markdown support with the live preview
+* likes/dislikes functionality
+* context API for the global state
+* create, read, and edit posts
+* most of the content is generated on the server using Next
+* user auth with the Google Firebase
+
 ![screenshot](./screencapture_1.png)
 ![screenshot](./screencapture_2.png)
 ## Getting Started
