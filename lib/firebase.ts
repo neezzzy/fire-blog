@@ -10,7 +10,7 @@ import {
   limit,
   getDocs,
   Timestamp,
-  serverTimestamp
+  serverTimestamp,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -44,8 +44,12 @@ export function postToJSON(doc) {
   const data = doc.data();
   return {
     ...data,
-    createdAt: data.createdAt ? Timestamp.fromDate(new Date(data.createdAt.seconds * 1000)).toMillis() : null,
-    updatedAt: data.updatedAt ? Timestamp.fromDate(new Date(data.updatedAt.seconds * 1000)).toMillis() : null,
+    createdAt: data.createdAt
+      ? Timestamp.fromDate(new Date(data.createdAt.seconds * 1000)).toMillis()
+      : null,
+    updatedAt: data.updatedAt
+      ? Timestamp.fromDate(new Date(data.updatedAt.seconds * 1000)).toMillis()
+      : null,
   };
 }
 
