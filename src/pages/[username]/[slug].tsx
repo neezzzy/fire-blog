@@ -1,5 +1,8 @@
 import styles from "../../styles/Post.module.css";
 import PostContent from "../../../components/PostContent";
+import HeartButton from "../../../components/HeartButton";
+import AuthCheck from "../../../components/AuthCheck";
+import Link from "next/link";
 import {
   firestore,
   getUserWithUsername,
@@ -34,10 +37,9 @@ export async function getStaticProps({ params }) {
   };
 }
 
-
 export async function getStaticPaths() {
   const q = query(
-    collectionGroup(firestore, 'posts'),
+    collectionGroup(firestore, "posts")
     // You can add additional query filters here, such as where() or orderBy()
   );
 
@@ -52,7 +54,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }
 
@@ -72,6 +74,15 @@ export default function Post(props) {
         <p>
           <strong>{post.heartCount || 0} 🤍</strong>
         </p>
+        <AuthCheck
+          fallback={
+            <Link href="/enter">
+              <button>💗 Sign Up</button>
+            </Link>
+          }
+        >
+          <HeartButton postRef={postRef} />
+        </AuthCheck>
       </aside>
     </main>
   );
